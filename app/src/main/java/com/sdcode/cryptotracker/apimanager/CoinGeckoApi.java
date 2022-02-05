@@ -18,7 +18,7 @@ public class CoinGeckoApi {
     private static final String currency = "USD";
 
     //    Gives 100 currencies info, called on main page
-//    https://api.coingecko.com/api/v3/coinList/markets?vs_currency=USD&order=market_cap_desc&per_page=10&page=1&sparkline=false/
+//    https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=10&page=1&sparkline=false/
 //    public static final String CoinListURL = "https://api.coingecko.com/api/v3/coinList/markets?vs_currency=" + currency + "&order=market_cap_desc&per_page=10&page=1&sparkline=false/";
     public static final String CoinListURL = "https://api.coingecko.com/api/v3/coins/";
 /*
@@ -47,11 +47,17 @@ public class CoinGeckoApi {
 
     public interface CoinService {
 
-        @GET("markets/?vs_currency=USD&order=market_cap_desc&per_page=20&page=1&sparkline=false")
+        @GET("markets/?vs_currency=USD&order=market_cap_desc&per_page=100&page=1&sparkline=false")
         Call<List<Coins>> getCoinList();
 
         @GET("{coinId}")
         Call<Root> getSingleCoinData(@Path("coinId")  String id);
     }
-
 }
+/*
+* GET - used for requirements
+* POST - passed data in body and used for insert
+* PUT - used for update
+* DELETE - used for delete
+* task - Learn all methods how they works
+* */

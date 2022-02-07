@@ -4,7 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/DR1000TU/AndroidStudioProjects/CryptoTracker/app/src/main/res/drawable/button_radius.xml" value="0.1546875" />
+        <entry key="..\:/Users/DR1000TU/AndroidStudioProjects/CryptoTracker/app/src/main/res/layout-v26/activity_coin_details.xml" value="0.176" />
+        <entry key="..\:/Users/DR1000TU/AndroidStudioProjects/CryptoTracker/app/src/main/res/layout/activity_coin_details.xml" value="0.2" />
         <entry key="..\:/Users/DR1000TU/AndroidStudioProjects/CryptoTracker/app/src/main/res/layout/activity_main.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/DR1000TU/AndroidStudioProjects/CryptoTracker/app/src/main/res/layout/content_responsive.xml" value="0.25" />
+        <entry key="..\:/Users/DR1000TU/AndroidStudioProjects/CryptoTracker/app/src/main/res/layout/fragment_settings.xml" value="0.1" />
         <entry key="..\:/Users/DR1000TU/AndroidStudioProjects/CryptoTracker/app/src/main/res/layout/rv_single_coin.xml" value="0.264" />
         <entry key="..\:/Users/DR1000TU/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/activity_list_item.xml" value="0.1" />
         <entry key="..\:/Users/DR1000TU/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_expandable_list_item_1.xml" value="0.1" />

@@ -21,6 +21,7 @@ public class CoinGeckoApi {
 //    https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=10&page=1&sparkline=false/
 //    public static final String CoinListURL = "https://api.coingecko.com/api/v3/coinList/markets?vs_currency=" + currency + "&order=market_cap_desc&per_page=10&page=1&sparkline=false/";
     public static final String CoinListURL = "https://api.coingecko.com/api/v3/coins/";
+
 /*
     //    Gives Single Coin info
     public static final String SingleCoinURL = "https://api.coingecko.com/api/v3/coinList/${id}";

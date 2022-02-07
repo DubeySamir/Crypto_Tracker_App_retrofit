@@ -4,15 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.sdcode.cryptotracker.adapter.CoinListRVAdapter;
 import com.sdcode.cryptotracker.apimanager.CoinGeckoApi;
 import com.sdcode.cryptotracker.apimanager.allcoinsinfo.Coins;
+import com.sdcode.cryptotracker.base.BaseClass;
 import com.sdcode.cryptotracker.models.CoinListModelClass;
 
 import java.util.ArrayList;
@@ -22,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseClass {
     RecyclerView recyclerViewCoinList;
     Button btn_loadCoinList;
 
@@ -30,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        initUi();
 
         recyclerViewCoinList = findViewById(R.id.recyclerViewCoinList);
         btn_loadCoinList = findViewById(R.id.btn_loadCoinList);
@@ -43,10 +49,29 @@ public class MainActivity extends AppCompatActivity {
                 getCoinsList();
             }
         });
+    }
+    @Override
+    public void initUi(){
+        super.initUi();
 
+        progressDialog = new ProgressDialog(MainActivity.this);
+        progressDialog.setMessage("Loading..."); // Setting Message
+        progressDialog.setTitle("ProgressDialog"); // Setting Title
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+        progressDialog.show(); // Display Progress Dialog
+        progressDialog.setCancelable(false);
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Thread.sleep(10000000);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                progressDialog.dismiss();
+            }
+        }).start();
 
     }
-
 
     private void getCoinsList() {
         Log.d("getCoinsList", "getCoinsList: First");
@@ -72,9 +97,9 @@ public class MainActivity extends AppCompatActivity {
 
                 for (int i = 0; i < coinList.size(); i++) {
                     values[i] = coinList.get(i);
-                    objectModelClassList.add(new CoinListModelClass(values[i].getId(),values[i].getImage(),values[i].getSymbol(),values[i].getName(),values[i].getCurrentPrice()));
+                    objectModelClassList.add(new CoinListModelClass(values[i].getId(), values[i].getImage(), values[i].getSymbol(), values[i].getName(), values[i].getCurrentPrice()));
                 }
-
+                progressDialog.dismiss();
                 CoinListRVAdapter adapter = new CoinListRVAdapter(objectModelClassList);
                 recyclerViewCoinList.setAdapter(adapter);
 
@@ -82,7 +107,10 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(int position) {
                         String coinId = adapter.getCoinId(position);
-                        Toast.makeText(getApplicationContext(), "user id = " + coinId, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Coin id = " + coinId, Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getApplicationContext(), CoinDetailsActivity.class);
+                        i.putExtra("coinId", coinId);
+                        startActivity(i);
                     }
                 });
 

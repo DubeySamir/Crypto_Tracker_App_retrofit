@@ -50,6 +50,7 @@ public class MainActivity extends BaseClass {
             }
         });
     }
+
     @Override
     public void initUi(){
         super.initUi();
